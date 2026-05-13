@@ -1,0 +1,9 @@
+# 测试依赖
+pytest==7.4.3
+pytest-asyncio==0.21.2
+pytest-cov==4.1.0
+httpx==0.25.1
+faker==22.2.0
+
+# 覆盖率报告
+coverage==7.3.2
