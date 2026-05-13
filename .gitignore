@@ -1,0 +1,59 @@
+# Dependencies
+node_modules/
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+.venv/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Environment files
+.env
+.env.local
+.env.*.local
+
+# Build outputs
+dist/
+build/
+*.egg-info/
+
+# Logs
+*.log
+logs/
+
+# Test coverage
+.coverage
+htmlcov/
+.pytest_cache/
+
+# Frontend build
+frontend/dist/
+frontend/node_modules/
+
+# Backend
+backend/__pycache__/
+backend/*.pyc
+backend/.env
+
+# Uploads (keep directory structure)
+backend/app/static/uploads/docs/*
+backend/app/static/uploads/sows/*
+!backend/app/static/uploads/docs/.gitkeep
+!backend/app/static/uploads/sows/.gitkeep
+
+# Database
+*.db
+*.sqlite3
