@@ -280,11 +280,11 @@
             <span>版本: 1.0.0</span>
           </div>
           <div class="footer-right">
-            <el-link :underline="false" type="info">帮助文档</el-link>
+            <el-link :underline="'never'" type="info">帮助文档</el-link>
             <span class="divider">|</span>
-            <el-link :underline="false" type="info">技术支持</el-link>
+            <el-link :underline="'never'" type="info">技术支持</el-link>
             <span class="divider">|</span>
-            <el-link :underline="false" type="info">服务热线: 400-123-4567</el-link>
+            <el-link :underline="'never'" type="info">服务热线: 400-123-4567</el-link>
           </div>
         </div>
       </footer>
