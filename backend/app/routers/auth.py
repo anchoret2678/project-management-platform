@@ -1,6 +1,7 @@
 from datetime import timedelta
 from fastapi import APIRouter, Depends, HTTPException, status
 from fastapi.security import OAuth2PasswordRequestForm
+from pydantic import BaseModel
 from sqlalchemy.orm import Session
 from app.database.database import get_db
 from app.schemas.user import UserCreate, UserResponse, Token, PasswordChange
@@ -14,9 +15,14 @@ from app.utils.exceptions import UnauthorizedException, BadRequestException
 router = APIRouter(prefix="/auth", tags=["认证"])
 
 
+class LoginRequest(BaseModel):
+    username: str
+    password: str
+
+
 @router.post("/login")
 async def login(
-    form_data: OAuth2PasswordRequestForm = Depends(),
+    form_data: LoginRequest,
     db: Session = Depends(get_db)
 ):
     """用户登录"""

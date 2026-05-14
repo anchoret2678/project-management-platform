@@ -1,20 +1,14 @@
 import { request } from './index'
-import service from './index'
 import type { LoginForm, RegisterForm, User, PasswordChange, ApiResponse } from '@/types'
 
 // 认证相关API
 export const authApi = {
   // 用户登录
   login(data: LoginForm): Promise<ApiResponse<{ access_token: string; user: User }>> {
-    // 使用 URLSearchParams 发送 application/x-www-form-urlencoded 格式
-    // 后端使用 OAuth2PasswordRequestForm，需要这种格式
-    const params = new URLSearchParams()
-    params.append('username', data.username)
-    params.append('password', data.password)
-    return service.post('/v1/auth/login', params, {
-      headers: {
-        'Content-Type': 'application/x-www-form-urlencoded'
-      }
+    // 直接发送 JSON 格式，后端使用 Pydantic BaseModel 接收
+    return request.post('/v1/auth/login', {
+      username: data.username,
+      password: data.password
     })
   },
   
