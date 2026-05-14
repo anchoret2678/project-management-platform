@@ -252,7 +252,13 @@
 <script setup lang="ts">
 import { ref, reactive, onMounted } from 'vue'
 import { ElMessage, type FormInstance, type FormRules } from 'element-plus'
-import { Save, Refresh, Setting, Switch, Tools } from '@element-plus/icons-vue'
+import { Select, RefreshRight, Setting, SwitchButton, SetUp } from '@element-plus/icons-vue'
+
+// 图标别名（兼容模板中的使用）
+const Save = Select
+const Refresh = RefreshRight
+const Switch = SwitchButton
+const Tools = SetUp
 import { useAppStore } from '@/store/app'
 
 const appStore = useAppStore()
