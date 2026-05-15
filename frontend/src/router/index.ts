@@ -274,6 +274,16 @@ router.beforeEach(async (to, from, next) => {
     appStore.setPageTitle(to.meta.title as string)
   }
   
+  // 如果 store 中没有用户信息，但本地有 token，先尝试恢复登录状态
+  if (!userStore.isLoggedIn) {
+    const { getToken } = await import('@/utils/auth')
+    const savedToken = getToken()
+    if (savedToken) {
+      // 有 token，尝试恢复登录状态（会调用 /me 接口验证 token）
+      await userStore.restoreLogin()
+    }
+  }
+  
   // 检查是否需要认证
   if (to.meta.requiresAuth) {
     // 检查是否已登录

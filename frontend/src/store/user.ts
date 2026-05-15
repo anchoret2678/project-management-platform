@@ -50,9 +50,6 @@ export const useUserStore = defineStore('user', () => {
         // 显示登录成功消息
         ElMessage.success('登录成功')
         
-        // 跳转到首页
-        router.push('/dashboard')
-        
         return true
       } else {
         ElMessage.error(response.message || '登录失败')
@@ -134,14 +131,14 @@ export const useUserStore = defineStore('user', () => {
         
         return true
       } else {
-        // 如果获取用户信息失败，清除登录状态
-        logout()
+        // 如果获取用户信息失败，清除登录状态（不跳转，由路由守卫处理）
+        resetUser()
         return false
       }
     } catch (error) {
       console.error('获取用户信息错误:', error)
-      // 如果获取失败，清除登录状态
-      logout()
+      // 如果获取失败，清除登录状态（不跳转，由路由守卫处理）
+      resetUser()
       return false
     }
   }
